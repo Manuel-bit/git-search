@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GitHttpServiceService } from  '../git-http-service.service';
+import {RepoList} from '../repo-list'; 
+
 @Component({
   selector: 'app-search-repos',
   templateUrl: './search-repos.component.html',
@@ -7,7 +9,7 @@ import { GitHttpServiceService } from  '../git-http-service.service';
 })
 export class SearchReposComponent implements OnInit {
   searchTerm:string;
-  repo:any;
+  repos:any;
   constructor( private searchService:GitHttpServiceService) {
 
    }
@@ -16,7 +18,7 @@ export class SearchReposComponent implements OnInit {
   }
   onClickGetRepos(searchTerm){
     this.searchService.fetchRepos(searchTerm).then(()=>{
-      this.repo = this.searchService.repo;
+      this.repos = this.searchService.repo;
     }),(error)=>{
       console.log(error);
     }

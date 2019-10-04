@@ -17,12 +17,12 @@
   <hr>   
 
 <div class="container">
-          <div class ="card" *ngFor = "let repo of repos">
+          <div class ="card" *ngFor = "let repos of repo">
               <div class="card-header">
-                  <p  class ='repo'>Repository Name: <a href="{{repos.html_url}}">{{repo.name}}</a></p>
+                  <p  class ='repo'>Repository Name: <a href="{{repos.html_url}}">{{repos.name}}</a></p>
               </div>   
               <div class="card-body" >  
-                      <p><strong>Description</strong> : {{repo.description}}</p>
+                      <p><strong>Description</strong> : {{repos.description}}</p>
               </div>
           </div>   
   </div>

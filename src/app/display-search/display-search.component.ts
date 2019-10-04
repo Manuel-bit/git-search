@@ -8,34 +8,35 @@ import {GitHttpServiceService} from '../git-http-service.service';
   selector: 'app-display-search',
   templateUrl: './display-search.component.html',
   styleUrls: ['./display-search.component.css'],
+  providers :[GitHttpServiceService],
 })
 export class DisplaySearchComponent implements OnInit {
-  public searchTerm : string;
+  public searchTerm : string="Manuel-bit";
   user : GitUser;
-  repos : GitRepos;
+  repo : GitRepos;
 
   constructor(public getUser:GitHttpServiceService, private getRepos:GitHttpServiceService) { }
 
- 
+  
   onClickGetUser(searchTerm){
     this.getUser.fetchUserData(this.searchTerm).then(
       ()=>{
         this.user = this.getUser.user;
       },(error)=>{
         console.log(error);
-      }
-    )
-    this.getRepos.fetchRepos(this.searchTerm).then(
+      })
+    
+    this.getRepos.fetchUserRepos(this.searchTerm).then(
       ()=>{
-        this.repos = this.getRepos.repo;
+        this.repo = this.getRepos.repo;
       },(error)=>{
         console.log(error);
-      }
-    )
+      })
+    
   }
+  
   ngOnInit() {
     this.onClickGetUser(this.searchTerm);
   }
-  
 }
 

@@ -8,13 +8,13 @@
 <hr>
 <br>
 
-<div class ="info" *ngFor = "let repos of repo">
+<div class ="info" *ngFor = "let gitrepo of repos">
   <div class="card">
       <div class="card-header">
-          <p  class ='repo'>Repository Name: <a href="{{repos.html_url}}">{{repos.name}}</a></p>
+          <p  class ='repo'>Repository Name: <a href="{{gitrepo.html_url}}">{{gitrepo.name}}</a></p>
       </div>    
       <div class="card-body" >  
-          <p>Description: {{repos.description}}</p>
+          <p>Description: {{gitrepo.description}}</p>
       </div>
   </div>
 </div>    

@@ -10,7 +10,7 @@ import { environment } from './../environments/environment';
 })
 export class GitHttpServiceService {
   user:GitUser;
-  repo:GitRepos;
+  repo: any = [];
 
 
 
@@ -40,16 +40,35 @@ export class GitHttpServiceService {
      })
      return promise
    }
+   fetchUserRepos(searchTerm:string){
+     interface userRepos{
+       name:string;
+       html_url:string;
+       description:string;
+     }
+     let userReposPromise = new Promise((resolve,reject)=>{
+       this.http.get<userRepos>('https://api.github.com/users/'+searchTerm+'/repos?order=created&sort=asc?access_token='+environment.apiKey).toPromise().then(
+         (userRepos)=>{
+           this.repo = userRepos;
+           resolve()
+         },error=>{
+           reject(error);
+         }
+       )
+     })
+     return userReposPromise;
+   }
    fetchRepos(searchTerm:string){
      interface RepoData{
        name:string;
-       description:string;
        html_url:string;
+       description:string;
+       
      }
      let repoPromise = new Promise((resolve,reject)=>{
-       this.http.get<RepoData>("https://api.github.com/users/"+searchTerm+"/repos?order=created&sort=asc?access_token="+environment.apiKey).toPromise().then(
+       this.http.get<RepoData>('https://api.github.com/search/repositories?q='+searchTerm+'&per_page="+10+"&sort=forks&order=asc?access_token='+environment.apiKey).toPromise().then(
          (repoData)=>{
-           this.repo = new GitRepos(repoData.name,repoData.description,repoData.html_url)
+           this.repo.push = repoData;
            console.log(repoData)
            resolve()
          },error=>{
