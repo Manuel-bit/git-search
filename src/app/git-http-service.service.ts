@@ -28,7 +28,7 @@ export class GitHttpServiceService {
        followers:number;
      }
      let promise = new Promise((resolve,reject)=>{
-       this.http.get<UserData>('https://api.github.com/users/'+searchTerm+'?access_token='+environment.apiKey).toPromise().then(
+       this.http.get<UserData>('https://api.github.com/users/'+searchTerm+'?access_token='+environment.APIKEY).toPromise().then(
          (result)=>{
            this.user = new GitUser(result.name,result.avatar_url,result.html_url,result.repos,result.following,result.followers)
            resolve()
@@ -47,7 +47,7 @@ export class GitHttpServiceService {
        description:string;
      }
      let userReposPromise = new Promise((resolve,reject)=>{
-       this.http.get<userRepos>('https://api.github.com/users/'+searchTerm+'/repos?order=created&sort=asc?access_token='+environment.apiKey).toPromise().then(
+       this.http.get<userRepos>('https://api.github.com/users/'+searchTerm+'/repos?order=created&sort=asc?access_token='+environment.APIKEY).toPromise().then(
          (userRepos)=>{
            this.repo = userRepos;
            resolve()
@@ -66,7 +66,7 @@ export class GitHttpServiceService {
        
      }
      let repoPromise = new Promise((resolve,reject)=>{
-       this.http.get<RepoData>('https://api.github.com/search/repositories?q='+searchTerm+'&per_page="+10+"&sort=forks&order=asc?access_token='+environment.apiKey).toPromise().then(
+       this.http.get<RepoData>('https://api.github.com/search/repositories?q='+searchTerm+'&per_page="+10+"&sort=forks&order=asc?access_token='+environment.APIKEY).toPromise().then(
          (repoData)=>{
            this.repo.push = repoData;
            console.log(repoData)
