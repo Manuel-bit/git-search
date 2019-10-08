@@ -11,7 +11,7 @@ import {GitHttpServiceService} from '../git-http-service.service';
   providers :[GitHttpServiceService],
 })
 export class DisplaySearchComponent implements OnInit {
-  public searchTerm : string="Manuel-bit";
+  public searchTerm : string='mugendinjue';
   user : GitUser;
   repo : GitRepos;
 
