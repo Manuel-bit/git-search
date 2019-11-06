@@ -11,7 +11,7 @@ import {GitHttpServiceService} from '../git-http-service.service';
   providers :[GitHttpServiceService],
 })
 export class DisplaySearchComponent implements OnInit {
-  public searchTerm : string='mugendinjue';
+  public searchTerm:any;
   user : GitUser;
   repo : GitRepos;
 
@@ -19,14 +19,14 @@ export class DisplaySearchComponent implements OnInit {
 
   
   onClickGetUser(searchTerm){
-    this.getUser.fetchUserData(this.searchTerm).then(
+    this.getUser.fetchUserData(searchTerm).then(
       ()=>{
         this.user = this.getUser.user;
       },(error)=>{
         console.log(error);
       })
     
-    this.getRepos.fetchUserRepos(this.searchTerm).then(
+    this.getRepos.fetchUserRepos(searchTerm).then(
       ()=>{
         this.repo = this.getRepos.repo;
       },(error)=>{
@@ -36,7 +36,7 @@ export class DisplaySearchComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.onClickGetUser(this.searchTerm);
+    this.onClickGetUser("Manuel-bit");
   }
 }
 
