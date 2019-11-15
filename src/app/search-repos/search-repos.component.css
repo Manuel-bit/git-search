@@ -1,0 +1,7 @@
+.card {
+  position: relative;
+  display: inline-block;
+  margin:10px;
+  border-radius: 5px;
+  color: white;
+}

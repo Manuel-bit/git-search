@@ -1,0 +1,12 @@
+
+.details{
+  color: white;
+  padding-top: 100px;
+}
+.card {
+  position: relative;
+  display: inline-block;
+  margin:10px;
+  border-radius: 5px;
+  color: white;
+}

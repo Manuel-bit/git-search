@@ -7,9 +7,7 @@
 </div>
 <hr>
 <br>
-
-<div class ="info" *ngFor = "let gitrepo of repolist">
-  <div class="card">
+  <div class="card bg-dark" style="width: 25rem;" *ngFor = "let gitrepo of repolist">
       <div class="card-header">
           <p  class ='repo'>Repository Name: <a href="{{gitrepo.html_url}}">{{gitrepo.name}}</a></p>
       </div>    
@@ -17,4 +15,4 @@
           <p>Description: {{gitrepo.description}}</p>
       </div>
   </div>
-</div>    
+   

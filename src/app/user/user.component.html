@@ -1,9 +1,10 @@
 
+<br><br>
 <div class="container">
   <div class="row top"> 
       <div class="col-md-6"  *ngIf ="user" >
-          <img src='{{user.avatar_url}}' alt="" class=" card-img mt-2 mb-2">
-              <p class="name" ><span appHighlight>{{user.name}}</span></p>
+          <img src='{{user.avatar_url}}' alt=""  style="height: 50%;">
+              <p class="name" style="color: white;">{{user.name}}</p>
               <a href='{{user.html_url}}' type="button" class="btn btn-outline-dark btn-sm git">Github Account</a>
       </div>
       <div class="col-md-6">
@@ -14,15 +15,13 @@
            </div>
       </div>
   </div>
+  </div>
   <hr>   
 
-<div class="container">
-          <div class ="card" *ngFor = "let repos of repo">
-              <div class="card-header">
-                  <p  class ='repo'>Repository Name: <a href="{{repos.html_url}}">{{repos.name}}</a></p>
-              </div>   
-              <div class="card-body" >  
-                      <p><strong>Description</strong> : {{repos.description}}</p>
-              </div>
-          </div>   
-  </div>
+  <div class="card bg-dark" style="width: 25rem;" *ngFor = "let repos of repo">
+      <div class="card-body">
+          <p  class ='repo'>Repository Name: <a href="{{repos.html_url}}">{{repos.name}}</a></p>
+          <p>Description: {{repos.description}}</p>
+        <a href="{{repos.html_url}}" class="btn btn-primary">visit repo</a>
+      </div>
+    </div>
